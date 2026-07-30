@@ -1,0 +1,44 @@
+{
+    "hero-title": {
+        "text": "Batihache • Charpenterie Traditionnelle",
+        "fontStyle": "normal",
+        "textAlign": "center",
+        "transform": "translate(0px, 0px)"
+    },
+    "hero-main": {
+        "text": "Ni clou ni vis",
+        "fontStyle": "normal",
+        "textAlign": "center",
+        "transform": "translate(0px, 0px)"
+    },
+    "hero-desc": {
+        "text": "Batihache perpétue les savoir-faire traditionnels de la charpente à travers l’art des assemblages bois-bois. Je conçois et réalise des ouvrages uniques et sur mesure favorisant un habitat sain, durable et respectueux de l’environnement.",
+        "fontStyle": "normal",
+        "textAlign": "center",
+        "transform": "translate(0px, 0px)"
+    },
+    "about-highlight": {
+        "text": "Un travail artisanal complet, guidé par la passion, et le sourire",
+        "fontStyle": "italic",
+        "textAlign": "left",
+        "transform": "translate(0px, 0px)"
+    },
+    "about-prose1": {
+        "text": "Animée par la volonté de contribuer à la création, à la préservation et au renouveau du patrimoine architectural rural et historique en bois, mon entreprise façonne des structures en bois équarri à la hache.",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "transform": "translate(0px, 0px)"
+    },
+    "about-prose2": {
+        "text": "C'est un travail artisanal complet, depuis la sélection minutieuse des arbres en forêt locale jusqu’au façonnage manuel. Chaque projet repose sur une approche attentive du matériau, valorisant les ressources locales et les techniques ancestrales pour réaliser des ouvrages authentiques à faible impact environnemental.",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "transform": "translate(0px, 0px)"
+    },
+    "artisan-quote": {
+        "text": "J'insuffle dans chaque chantier ma générosité, ma bonne humeur communicative et mon amour du travail bien fait. La rigueur technique se mêle toujours à mon sourire sincère, faisant de chaque projet une collaboration humaine unique.",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "transform": "translate(0px, 0px)"
+    }
+}

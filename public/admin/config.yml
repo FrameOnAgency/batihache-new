@@ -1,0 +1,104 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master/main)
+
+media_folder: "public/images/uploads" # Media files will be stored in the repo under this folder
+public_folder: "/images/uploads" # The src attribute for uploaded media will begin with this
+
+collections:
+  - name: "cms_content"
+    label: "Textes Globaux"
+    editor:
+      preview: false
+    files:
+      - label: "Configuration Textes"
+        name: "texts"
+        file: "public/data/content.json"
+        fields:
+          - name: "hero-title"
+            label: "Titre Principal Héro (h3)"
+            widget: "object"
+            fields:
+              - {name: "text", widget: "string", label: "Texte"}
+              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
+              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
+              - {name: "transform", widget: "string", label: "Transformation CSS (avancé)"}
+          - name: "hero-main"
+            label: "Slogan Héro (h1)"
+            widget: "object"
+            fields:
+              - {name: "text", widget: "string", label: "Texte"}
+              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
+              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
+              - {name: "transform", widget: "string"}
+          - name: "hero-desc"
+            label: "Texte d'accroche"
+            widget: "object"
+            fields:
+              - {name: "text", widget: "text", label: "Texte"}
+              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
+              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
+              - {name: "transform", widget: "string"}
+          - name: "about-highlight"
+            label: "Citation Philosophie (Gros texte)"
+            widget: "object"
+            fields:
+              - {name: "text", widget: "text", label: "Texte"}
+              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
+              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
+              - {name: "transform", widget: "string"}
+          - name: "about-prose1"
+            label: "Philosophie Paragraphe 1"
+            widget: "object"
+            fields:
+              - {name: "text", widget: "text", label: "Texte"}
+              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
+              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
+              - {name: "transform", widget: "string"}
+          - name: "about-prose2"
+            label: "Philosophie Paragraphe 2"
+            widget: "object"
+            fields:
+              - {name: "text", widget: "text", label: "Texte"}
+              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
+              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
+              - {name: "transform", widget: "string"}
+          - name: "artisan-quote"
+            label: "Citation Matteo"
+            widget: "object"
+            fields:
+              - {name: "text", widget: "text", label: "Texte"}
+              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
+              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
+              - {name: "transform", widget: "string"}
+      - label: "Photos de Couverture"
+        name: "settings"
+        file: "public/data/settings.json"
+        fields:
+          - name: "coverImages"
+            label: "Images de couverture"
+            widget: "object"
+            fields:
+              - {name: "construction", label: "Construction", widget: "image", required: false}
+              - {name: "renovation", label: "Rénovation", widget: "image", required: false}
+              - {name: "atypique", label: "Atypique", widget: "image", required: false}
+      
+  - name: "portfolio"
+    label: "Chantiers"
+    editor:
+      preview: false
+    files:
+      - label: "Tous les chantiers"
+        name: "projects_file"
+        file: "public/data/projects.json"
+        fields:
+          - name: "items"
+            label: "Liste des chantiers"
+            widget: "list"
+            fields:
+              - {name: "id", label: "ID Unique (ex: c1, user-1234)", widget: "string"}
+              - {name: "title", label: "Titre", widget: "string"}
+              - {name: "category", label: "Catégorie", widget: "select", options: ["construction", "renovation", "atypique"]}
+              - {name: "description", label: "Description", widget: "text"}
+              - {name: "image", label: "Photo / Image", widget: "image", required: false}
+              - {name: "date", label: "Date (Optionnel, AAAA-MM-JJ)", widget: "string", required: false}
