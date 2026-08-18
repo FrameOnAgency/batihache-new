@@ -7,7 +7,18 @@
   <title>Batihache - Charpenterie Traditionnelle d'Exception</title>
   <meta name="description"
     content="Découvrez Batihache, charpente traditionnelle bois-bois d'exception. Ouvrages façonnés à la hache, respectueux du patrimoine et à faible impact environnemental.">
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="./images/logo.jpg">
+
+  <!-- Open Graph (partage réseaux sociaux) -->
+  <meta property="og:title" content="Batihache - Charpenterie Traditionnelle d'Exception">
+  <meta property="og:description"
+    content="Charpente traditionnelle bois-bois d'exception. Ouvrages façonnés à la hache, respectueux du patrimoine et de l'environnement.">
+  <meta property="og:image" content="./images/logo.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -24,8 +35,8 @@
       <nav id="site-nav">
         <a href="#about" class="nav-item">Philosophie</a>
         <a href="#pillars" class="nav-item">Mes Piliers</a>
-        <a href="./admin.html" class="nav-item">Administration</a>
         <a href="#contact" class="cta-button">Étude de Projet</a>
+        <a href="#" class="admin-button" id="admin-trigger" title="Administration">⚙</a>
       </nav>
 
       <button class="mobile-toggle" id="menu-toggle" aria-label="Menu principal">
@@ -38,7 +49,15 @@
 
   <!-- SECTION 1: HERO HERO -->
   <section class="hero" id="home">
-    <div class="hero-wood-bg"></div>
+    <div class="hero-slideshow" id="hero-slideshow">
+      <img src="./images/renovation/haches.jpg" alt="" class="hero-slide active" aria-hidden="true">
+      <img src="./images/construction/wycart.jpg" alt="" class="hero-slide" aria-hidden="true">
+      <img src="./images/atypique/DSCF6823.JPG" alt="" class="hero-slide" aria-hidden="true">
+      <img src="./images/renovation/Mongardain.jpg" alt="" class="hero-slide" aria-hidden="true">
+      <img src="./images/atypique/DSCF6804.JPG" alt="" class="hero-slide" aria-hidden="true">
+      <img src="./images/renovation/karma1.1.jpg" alt="" class="hero-slide" aria-hidden="true">
+    </div>
+    <div class="hero-slideshow-overlay"></div>
     <div class="hero-grid-overlay"></div>
     <div class="hero-container container">
       <div class="hero-content">
@@ -70,8 +89,9 @@
           <img src="./images/renovation/haches.jpg" alt="Haches d'équarrissage Batihache" class="about-image">
         </div>
         <div class="about-text-content">
-          <span class="section-label">Philosophie</span>
-          <h2 class="section-title" style="text-align: left; display: inline-block;">L'Art de la Hache et du Bois</h2>
+          <span class="section-label" data-content-id="about-label">Philosophie</span>
+          <h2 class="section-title" data-content-id="about-title" style="text-align: left; display: inline-block;">L'Art
+            de la Hache et du Bois</h2>
           <div class="about-highlight" data-content-id="about-highlight">
             Un travail artisanal complet, guidé par la passion, et le sourire
           </div>
@@ -106,8 +126,8 @@
   <section class="pillars" id="pillars">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Domaines de savoir-faire</span>
-        <h2 class="section-title">Les Piliers de l'Ouvrage</h2>
+        <span class="section-label" data-content-id="pillars-label">Domaines de savoir-faire</span>
+        <h2 class="section-title" data-content-id="pillars-title">Les Piliers de l'Ouvrage</h2>
       </div>
 
       <div class="pillars-grid">
@@ -205,8 +225,8 @@
   <section class="contact" id="contact">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Parlons de votre projet</span>
-        <h2 class="section-title">Prendre contact</h2>
+        <span class="section-label" data-content-id="contact-label">Parlons de votre projet</span>
+        <h2 class="section-title" data-content-id="contact-title">Prendre contact</h2>
       </div>
 
       <div class="contact-wrapper">
@@ -217,10 +237,10 @@
           </svg>
 
           <div>
-            <h3>Batihache</h3>
-            <p>
+            <h3 data-content-id="contact-subtitle">Batihache</h3>
+            <p data-content-id="contact-desc">
               Prêt à imaginer votre charpente idéale ou à redonner vie à un bâtiment ancien ? Envoyez-moi un message, et
-              c'est avec plaisir et un bon café que j'étudierai votre projet.
+              c'est avec plaisir que j'étudierai votre projet.
             </p>
           </div>
 
@@ -229,7 +249,7 @@
               <div class="contact-detail-icon">📞</div>
               <div>
                 <h4 class="contact-detail-label">Téléphone</h4>
-                <a href="tel:+33646425659" class="contact-detail-value">+33646425659</a>
+                <a href="tel:+33646425659" class="contact-detail-value" data-content-id="contact-phone">+33646425659</a>
               </div>
             </div>
 
@@ -237,7 +257,8 @@
               <div class="contact-detail-icon">✉</div>
               <div>
                 <h4 class="contact-detail-label">Email</h4>
-                <a href="mailto:batihache@gmail.com" class="contact-detail-value">batihache@gmail.com</a>
+                <a href="mailto:batihache@gmail.com" class="contact-detail-value"
+                  data-content-id="contact-email">batihache@gmail.com</a>
               </div>
             </div>
 
@@ -245,48 +266,24 @@
               <div class="contact-detail-icon">📍</div>
               <div>
                 <h4 class="contact-detail-label">Adresse de l'Atelier</h4>
-                <address class="contact-detail-value">
+                <address class="contact-detail-value" data-content-id="contact-address">
                   La curtanne, 38580 La Chapelle-du-Bard
                 </address>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="contact-form-panel">
-            <form id="contact-form" action="#" method="POST">
-              <div class="form-row">
-                <div class="form-group">
-                  <input type="text" id="form-name" class="form-input" placeholder=" " required>
-                  <label for="form-name" class="form-label">Votre nom *</label>
-                </div>
-                <div class="form-group">
-                  <input type="email" id="form-email" class="form-input" placeholder=" " required>
-                  <label for="form-email" class="form-label">Votre email *</label>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <input type="text" id="form-phone" class="form-input" placeholder=" ">
-                <label for="form-phone" class="form-label">Numéro de téléphone</label>
-              </div>
-
-              <div class="form-group">
-                <input type="text" id="form-project-type" class="form-input" placeholder=" ">
-                <label for="form-project-type" class="form-label">Type d'ouvrage (ex: Extension, Rénovation,
-                  Cabane...)</label>
-              </div>
-
-              <div class="form-group">
-                <textarea id="form-message" class="form-textarea" placeholder=" " required></textarea>
-                <label for="form-message" class="form-label">Parlez-m'en en quelques mots... *</label>
-              </div>
-
-              <button type="submit" class="submit-button">Envoyer le message</button>
-              <div id="contact-form-status"></div>
-            </form>
-          </div>
+        <div class="contact-form-panel">
+          <!-- Intégration Tally -->
+          <iframe
+            data-tally-src="https://tally.so/embed/GxEzQp?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0"
+            title="Formulaire de contact"></iframe>
+          <script>var d = document, w = "https://tally.so/widgets/embed.js", v = function () { "undefined" != typeof Tally ? Tally.loadEmbeds() : d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function (e) { e.src = e.dataset.tallySrc })) }; if ("undefined" != typeof Tally) v(); else if (d.querySelector('script[src="' + w + '"]') == null) { var s = d.createElement("script"); s.src = w, s.onload = v, s.onerror = v, d.body.appendChild(s); }</script>
         </div>
       </div>
+    </div>
   </section>
 
   <!-- FOOTER -->
@@ -298,26 +295,17 @@
             <img src="./images/logo.jpg" alt="Logo de pied de page">
             <span>Batihache</span>
           </div>
-          <p class="footer-desc">
+          <p class="footer-desc" data-content-id="footer-tagline">
             Charpenterie d'exception perpétuant le geste ancestral de l'équarrissage à la hache et des liaisons de bois
             traditionnelles.
           </p>
         </div>
 
         <div>
-          <h4 class="footer-col-title">Savoir-Faire</h4>
+          <h4 class="footer-col-title">Batihache</h4>
           <ul class="footer-links">
-            <li><a href="#pillars" data-pillar="construction">Charpente & Construction</a></li>
-            <li><a href="#pillars" data-pillar="renovation">Rénovation & Patrimoine</a></li>
-            <li><a href="#pillars" data-pillar="atypique">Refuges & Cabanes Insolites</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">L'Artisan</h4>
-          <ul class="footer-links">
-            <li><a href="#about">Ma Philosophie</a></li>
-            <li><a href="#about">L'art de la hache</a></li>
+            <li><a href="#about"><span data-content-id="about-title">Ma Philosophie</span></a></li>
+            <li><a href="#pillars"><span data-content-id="pillars-title">Mes Ouvrages</span></a></li>
             <li><a href="./admin.html">Espace Artisans</a></li>
           </ul>
         </div>
@@ -325,14 +313,15 @@
         <div>
           <h4 class="footer-col-title">Disponibilité</h4>
           <div class="footer-col-hours">
-            <p><strong>Lun - Ven :</strong> 8h00 - 18h30</p>
-            <p><strong>Sam :</strong> Écoute téléphonique uniquement</p>
-            <p><strong>Rayon d'action :</strong> alpes et hautes alpes</p>
+            <p><strong>Lun - Ven :</strong> <span data-content-id="footer-hours-week">8h00 - 18h30</span></p>
+            <p><strong>Sam :</strong> <span data-content-id="footer-hours-sat">Écoute téléphonique uniquement</span></p>
+            <p><strong>Rayon d'action :</strong> <span data-content-id="footer-hours-radius">alpes et hautes
+                alpes</span></p>
           </div>
         </div>
       </div>
 
-      <div class="footer-bottom">
+      <div class="footer-bottom" id="footer-bottom-bar">
         <p>&copy; 2026 Batihache Charpenterie. Tous droits réservés. Réalisé avec Passion.</p>
         <div class="footer-bot-links">
           <a href="#">Mentions Légales</a>
@@ -424,17 +413,24 @@
     </div>
   </div>
 
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
+  <!-- ADMIN PASSWORD MODAL -->
+  <div class="admin-modal-overlay" id="admin-modal">
+    <div class="admin-modal-box">
+      <div class="admin-modal-icon">⚒</div>
+      <h3 class="admin-modal-title">Accès Administration</h3>
+      <p class="admin-modal-desc">Entrez le code d'accès pour continuer.</p>
+      <form id="admin-modal-form">
+        <input type="password" id="admin-code-input" class="admin-modal-input" placeholder="Code d'accès"
+          autocomplete="off" autofocus>
+        <div class="admin-modal-error" id="admin-modal-error">Code incorrect</div>
+        <div class="admin-modal-actions">
+          <button type="button" class="admin-modal-cancel" id="admin-modal-cancel">Annuler</button>
+          <button type="submit" class="admin-modal-submit">Accéder</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="./js/main.js"></script>
 </body>
 

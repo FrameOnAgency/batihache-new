@@ -245,6 +245,7 @@ nav {
 }
 
 .cta-button {
+  display: inline-block;
   font-family: var(--font-sans);
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -259,17 +260,18 @@ nav {
   overflow: hidden;
   z-index: 1;
   transition: var(--transition-smooth);
+  text-decoration: none;
 }
 
 .cta-button::after {
   content: '';
   position: absolute;
-  top: 100%;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   background: var(--primary-oak);
   z-index: -1;
+  transform: translateY(100%);
   transition: var(--transition-smooth);
 }
 
@@ -279,7 +281,32 @@ nav {
 }
 
 .cta-button:hover::after {
-  top: 0;
+  transform: translateY(0);
+}
+
+/* Admin Button */
+.admin-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border-gold);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: var(--primary-oak);
+  background: transparent;
+  transition: var(--transition-smooth);
+  margin-left: 0.5rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.admin-button:hover {
+  background: var(--primary-oak);
+  color: var(--bg-parchment);
+  transform: rotate(90deg);
+  border-color: var(--primary-oak);
 }
 
 /* Mobile Nav Toggle */
@@ -312,24 +339,103 @@ nav {
   overflow: hidden;
 }
 
-/* Wood Timber overlay skeleton decoration */
-.hero-wood-bg {
+/* Ken Burns Slideshow Background */
+.hero-slideshow {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(18, 18, 14, 0.85), rgba(18, 18, 14, 0.95)), url('../images/renovation/haches.jpg');
-  background-size: cover;
-  background-position: center;
   z-index: 1;
-  transform: scale(1.05);
-  animation: slowZoom 20s infinite alternate ease-in-out;
 }
 
-@keyframes slowZoom {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.08); }
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transform: scale(1.15);
+  transition: opacity 2s ease-in-out;
+  will-change: opacity, transform;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+/* Each slide gets a unique Ken Burns animation direction for variety */
+.hero-slide.kb-zoom-in {
+  animation: kbZoomIn 8s ease-in-out forwards;
+}
+
+.hero-slide.kb-zoom-out {
+  animation: kbZoomOut 8s ease-in-out forwards;
+}
+
+.hero-slide.kb-pan-left {
+  animation: kbPanLeft 8s ease-in-out forwards;
+}
+
+.hero-slide.kb-pan-right {
+  animation: kbPanRight 8s ease-in-out forwards;
+}
+
+.hero-slide.kb-pan-up {
+  animation: kbPanUp 8s ease-in-out forwards;
+}
+
+.hero-slide.kb-diagonal {
+  animation: kbDiagonal 8s ease-in-out forwards;
+}
+
+@keyframes kbZoomIn {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
+
+@keyframes kbZoomOut {
+  0%   { transform: scale(1.25); }
+  100% { transform: scale(1.05); }
+}
+
+@keyframes kbPanLeft {
+  0%   { transform: scale(1.2) translateX(3%); }
+  100% { transform: scale(1.2) translateX(-3%); }
+}
+
+@keyframes kbPanRight {
+  0%   { transform: scale(1.2) translateX(-3%); }
+  100% { transform: scale(1.2) translateX(3%); }
+}
+
+@keyframes kbPanUp {
+  0%   { transform: scale(1.15) translateY(3%); }
+  100% { transform: scale(1.15) translateY(-2%); }
+}
+
+@keyframes kbDiagonal {
+  0%   { transform: scale(1.1) translate(-2%, 2%); }
+  100% { transform: scale(1.2) translate(2%, -2%); }
+}
+
+/* Dark overlay on top of slideshow for text readability */
+.hero-slideshow-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 18, 14, 0.7) 0%,
+    rgba(18, 18, 14, 0.6) 40%,
+    rgba(18, 18, 14, 0.8) 100%
+  );
+  z-index: 1;
 }
 
 .hero-grid-overlay {
@@ -400,6 +506,17 @@ nav {
   margin: 0 auto 3rem auto;
   font-weight: 300;
   animation: fadeInUp 1.4s ease;
+}
+
+/* Hero CTA — bouton lisible sur fond sombre */
+.hero-cta {
+  color: var(--text-light);
+  border-color: var(--primary-oak);
+  animation: fadeInUp 1.6s ease;
+}
+
+.hero-cta:hover {
+  color: var(--bg-dark);
 }
 
 .scroll-indicator {
@@ -1528,4 +1645,157 @@ footer {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
+}
+
+/* ─── ADMIN PASSWORD MODAL ─── */
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.admin-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.admin-modal-box {
+  background: var(--accent-charcoal);
+  border: 1px solid var(--border-gold);
+  padding: 3rem 2.5rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  transform: translateY(30px) scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.admin-modal-overlay.active .admin-modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.admin-modal-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-oak);
+}
+
+.admin-modal-title {
+  font-family: var(--font-serif-display);
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.admin-modal-desc {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--text-light-muted, #a09b8c);
+  margin-bottom: 2rem;
+}
+
+.admin-modal-input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+
+.admin-modal-input:focus {
+  border-color: var(--primary-oak);
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+}
+
+.admin-modal-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.1em;
+}
+
+.admin-modal-error {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: #e74c3c;
+  margin-top: 0.75rem;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, height 0.3s ease, margin 0.3s ease;
+}
+
+.admin-modal-error.visible {
+  opacity: 1;
+  height: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.admin-modal-cancel,
+.admin-modal-submit {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-modal-cancel {
+  background: transparent;
+  color: var(--text-light-muted, #a09b8c);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.admin-modal-cancel:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.admin-modal-submit {
+  background: var(--primary-oak);
+  color: var(--bg-dark);
+  border-color: var(--primary-oak);
+}
+
+.admin-modal-submit:hover {
+  background: var(--primary-oak-dark, #a88544);
+  border-color: var(--primary-oak-dark, #a88544);
+}
+
+/* Shake animation for wrong password */
+@keyframes shakeModal {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+.admin-modal-box.shake {
+  animation: shakeModal 0.4s ease;
 }

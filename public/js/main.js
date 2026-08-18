@@ -525,36 +525,96 @@ document.addEventListener('keydown', (e) => {
 });
 
 // 5. CONTACT FORM SUBMISSION
-const contactForm = document.getElementById('contact-form');
-const contactFormStatus = document.getElementById('contact-form-status');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const nameVal = document.getElementById('form-name').value;
-        const emailVal = document.getElementById('form-email').value;
-        const typeVal = document.getElementById('form-project-type').value || "Charpente";
-
-        contactFormStatus.className = '';
-        contactFormStatus.textContent = "Envoi en cours...";
-
-        // Simulate sending (carpentry/poetical spirit)
-        setTimeout(() => {
-            contactFormStatus.className = 'success';
-            contactFormStatus.textContent = `Grazie mille ${nameVal} ! Votre demande concernant un ouvrage de type "${typeVal}" a bien été transmise. Matteo vous recontactera très prochainement avec le sourire pour planifier une visite sur place.`;
-
-            // Reset form
-            contactForm.reset();
-        }, 1500);
-    });
-}
+// Formulaire de contact remplacé par l'intégration iframe Tally.
+// (La logique a été retirée car Tally gère l'envoi en interne).
 
 // 6. INITIAL RUN
 window.addEventListener('DOMContentLoaded', async () => {
     await initDatabase();
     loadCoverImages(); // Apply custom cover images if server is available
     loadCMSContent(); // Apply dynamic CMS custom texts
+    initKenBurnsSlideshow(); // Start hero Ken Burns slideshow
+
+    // ─── ADMIN ACCESS MODAL ───
+    const adminModal = document.getElementById('admin-modal');
+    const adminCodeInput = document.getElementById('admin-code-input');
+    const adminModalForm = document.getElementById('admin-modal-form');
+    const adminModalError = document.getElementById('admin-modal-error');
+    const adminModalCancel = document.getElementById('admin-modal-cancel');
+    const adminModalBox = adminModal ? adminModal.querySelector('.admin-modal-box') : null;
+
+    function openAdminModal() {
+        if (!adminModal) return;
+        adminCodeInput.value = '';
+        adminModalError.classList.remove('visible');
+        adminModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => adminCodeInput.focus(), 100);
+    }
+
+    function closeAdminModal() {
+        if (!adminModal) return;
+        adminModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function submitAdminCode() {
+        const code = adminCodeInput.value;
+        if (code === 'Matthis') {
+            closeAdminModal();
+            window.location.href = './admin/';
+        } else {
+            adminModalError.classList.add('visible');
+            adminModalBox.classList.add('shake');
+            adminCodeInput.value = '';
+            adminCodeInput.focus();
+            setTimeout(() => adminModalBox.classList.remove('shake'), 500);
+        }
+    }
+
+    // Admin button in nav opens modal
+    const adminTrigger = document.getElementById('admin-trigger');
+    if (adminTrigger) {
+        adminTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            openAdminModal();
+        });
+    }
+
+    // Footer double-click also opens modal
+    const footerBar = document.getElementById('footer-bottom-bar');
+    if (footerBar) {
+        footerBar.addEventListener('dblclick', () => {
+            openAdminModal();
+        });
+    }
+
+    // Modal form submit
+    if (adminModalForm) {
+        adminModalForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            submitAdminCode();
+        });
+    }
+
+    // Modal cancel
+    if (adminModalCancel) {
+        adminModalCancel.addEventListener('click', closeAdminModal);
+    }
+
+    // Close modal on overlay click
+    if (adminModal) {
+        adminModal.addEventListener('click', (e) => {
+            if (e.target === adminModal) closeAdminModal();
+        });
+    }
+
+    // Close modal on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && adminModal && adminModal.classList.contains('active')) {
+            closeAdminModal();
+        }
+    });
 });
 
 // 7. COVER IMAGES - Load dynamic covers from settings API
@@ -563,10 +623,34 @@ async function loadCoverImages() {
         const res = await fetch('./data/settings.json');
         if (!res.ok) return;
         const settings = await res.json();
-        if (!settings.coverImages) return;
-        for (const [cat, imgPath] of Object.entries(settings.coverImages)) {
-            const el = document.getElementById(`cover-${cat}`);
-            if (el && imgPath) el.src = imgPath;
+
+        if (settings.coverImages) {
+            for (const [cat, imgPath] of Object.entries(settings.coverImages)) {
+                const el = document.getElementById(`cover-${cat}`);
+                if (el && imgPath) el.src = imgPath;
+            }
+        }
+
+        if (settings.pillarTitles) {
+            for (const [cat, titleText] of Object.entries(settings.pillarTitles)) {
+                const card = document.querySelector(`.pillar-card[data-category="${cat}"]`);
+                if (card) {
+                    const titleEl = card.querySelector('.pillar-card-title');
+                    if (titleEl && titleText) titleEl.textContent = titleText;
+                }
+                const tabBtn = document.querySelector(`.modal-tab-btn[data-tab="${cat}"]`);
+                if (tabBtn && titleText) tabBtn.textContent = titleText;
+            }
+        }
+
+        if (settings.pillarDesc) {
+            for (const [cat, descText] of Object.entries(settings.pillarDesc)) {
+                const card = document.querySelector(`.pillar-card[data-category="${cat}"]`);
+                if (card) {
+                    const descEl = card.querySelector('.pillar-card-desc');
+                    if (descEl && descText) descEl.textContent = descText;
+                }
+            }
         }
     } catch {
         // No server or no settings: default images stay
@@ -583,8 +667,13 @@ async function loadCMSContent() {
             const el = document.querySelector(`[data-content-id="${id}"]`);
             if (el) {
                 if (data.text) el.textContent = data.text;
+                if (data.fontFamily) el.style.fontFamily = data.fontFamily;
+                if (data.fontSize) el.style.fontSize = data.fontSize;
+                if (data.fontWeight) el.style.fontWeight = data.fontWeight;
                 if (data.fontStyle) el.style.fontStyle = data.fontStyle;
                 if (data.textAlign) el.style.textAlign = data.textAlign;
+                if (data.textTransform && data.textTransform !== 'none') el.style.textTransform = data.textTransform;
+                if (data.letterSpacing && data.letterSpacing !== '0em') el.style.letterSpacing = data.letterSpacing;
                 if (data.transform) el.style.transform = data.transform;
             }
         }
@@ -593,3 +682,49 @@ async function loadCMSContent() {
     }
 }
 
+// 9. KEN BURNS HERO SLIDESHOW
+function initKenBurnsSlideshow() {
+    const slides = document.querySelectorAll('.hero-slide');
+    if (slides.length <= 1) return;
+
+    const kbEffects = ['kb-zoom-in', 'kb-zoom-out', 'kb-pan-left', 'kb-pan-right', 'kb-pan-up', 'kb-diagonal'];
+    let currentSlide = 0;
+    let lastEffect = '';
+
+    function getRandomEffect() {
+        let effect;
+        do {
+            effect = kbEffects[Math.floor(Math.random() * kbEffects.length)];
+        } while (effect === lastEffect);
+        lastEffect = effect;
+        return effect;
+    }
+
+    function clearKBClasses(slide) {
+        kbEffects.forEach(cls => slide.classList.remove(cls));
+    }
+
+    // Start the first slide with an animation
+    clearKBClasses(slides[0]);
+    slides[0].classList.add(getRandomEffect());
+
+    setInterval(() => {
+        const prevSlide = currentSlide;
+        currentSlide = (currentSlide + 1) % slides.length;
+
+        // Prepare the incoming slide: reset its animation, assign a new effect
+        clearKBClasses(slides[currentSlide]);
+        // Force reflow so animation restarts cleanly
+        void slides[currentSlide].offsetWidth;
+        slides[currentSlide].classList.add(getRandomEffect());
+
+        // Crossfade: activate new, deactivate old
+        slides[currentSlide].classList.add('active');
+        slides[prevSlide].classList.remove('active');
+
+        // After the old slide fully fades out (2s transition), reset its animation
+        setTimeout(() => {
+            clearKBClasses(slides[prevSlide]);
+        }, 2200);
+    }, 8000); // Change every 8 seconds
+}

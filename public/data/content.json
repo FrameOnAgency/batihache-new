@@ -3,42 +3,257 @@
         "text": "Batihache • Charpenterie Traditionnelle",
         "fontStyle": "normal",
         "textAlign": "center",
-        "transform": "translate(0px, 0px)"
+        "transform": "translate(0px, 0px)",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "textTransform": "none"
     },
     "hero-main": {
-        "text": "Ni clou ni vis",
+        "text": "NI CLOU NI VIS",
         "fontStyle": "normal",
         "textAlign": "center",
-        "transform": "translate(0px, 0px)"
+        "transform": "translate(0px, 0px)",
+        "fontFamily": "Georgia, serif",
+        "fontSize": "4rem",
+        "fontWeight": "700",
+        "textTransform": "none"
     },
     "hero-desc": {
-        "text": "Batihache perpétue les savoir-faire traditionnels de la charpente à travers l’art des assemblages bois-bois. Je conçois et réalise des ouvrages uniques et sur mesure favorisant un habitat sain, durable et respectueux de l’environnement.",
+        "text": "Batihache perpétue les savoir-faire traditionnels de la charpente en conçevant et réalisant des ouvrages uniques, durable et respectueux de l’environnement.",
         "fontStyle": "normal",
         "textAlign": "center",
+        "transform": "translate(0px, 0px)",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "textTransform": "none"
+    },
+    "about-label": {
+        "text": "Philosophie",
+        "fontFamily": "'Inter', sans-serif",
+        "fontSize": "0.8rem",
+        "fontWeight": "600",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "textTransform": "uppercase",
+        "letterSpacing": "0.3em",
+        "transform": "translate(0px, 0px)"
+    },
+    "about-title": {
+        "text": "L'Art de la Hache et du Bois",
+        "fontFamily": "'Cinzel', serif",
+        "fontSize": "2.5rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "letterSpacing": "0em",
         "transform": "translate(0px, 0px)"
     },
     "about-highlight": {
-        "text": "Un travail artisanal complet, guidé par la passion, et le sourire",
+        "text": "Un travail artisanal de qualité, guidé par la passion.",
         "fontStyle": "italic",
         "textAlign": "left",
-        "transform": "translate(0px, 0px)"
+        "transform": "translate(0px, 0px)",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "textTransform": "none"
     },
     "about-prose1": {
         "text": "Animée par la volonté de contribuer à la création, à la préservation et au renouveau du patrimoine architectural rural et historique en bois, mon entreprise façonne des structures en bois équarri à la hache.",
         "fontStyle": "normal",
         "textAlign": "left",
-        "transform": "translate(0px, 0px)"
+        "transform": "translate(0px, 0px)",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "textTransform": "none"
     },
     "about-prose2": {
-        "text": "C'est un travail artisanal complet, depuis la sélection minutieuse des arbres en forêt locale jusqu’au façonnage manuel. Chaque projet repose sur une approche attentive du matériau, valorisant les ressources locales et les techniques ancestrales pour réaliser des ouvrages authentiques à faible impact environnemental.",
+        "text": "C'est un travail artisanal complet, depuis la sélection minutieuse des arbres en forêt locale jusqu’au façonnage manuel. Chaque projet repose sur une approche attentive du matériau, valorisant les ressources locales et les techniques traditionelles pour réaliser esthétique, authentiques et durable.",
         "fontStyle": "normal",
         "textAlign": "left",
-        "transform": "translate(0px, 0px)"
+        "transform": "translate(0px, 0px)",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "textTransform": "none"
     },
     "artisan-quote": {
-        "text": "J'insuffle dans chaque chantier ma générosité, ma bonne humeur communicative et mon amour du travail bien fait. La rigueur technique se mêle toujours à mon sourire sincère, faisant de chaque projet une collaboration humaine unique.",
+        "text": "J'insuffle dans chaque chantier ma gpassion, ma bonne humeur communicative et mon amour du travail bien fait. La rigueur technique se mêle toujours à mon sourire sincère, faisant de chaque projet une collaboration humaine unique.",
         "fontStyle": "normal",
         "textAlign": "left",
+        "transform": "translate(0px, 0px)",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "textTransform": "none"
+    },
+    "contact-label": {
+        "text": "Parlons de votre projet",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "center",
+        "textTransform": "none",
+        "letterSpacing": "0em",
+        "transform": "translate(0px, 0px)"
+    },
+    "contact-title": {
+        "text": "PRENDRE CONTACT",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "justify",
+        "textTransform": "none",
+        "letterSpacing": "0em",
+        "transform": "translate(0px, 0px)"
+    },
+    "contact-subtitle": {
+        "text": "",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "letterSpacing": "0em",
+        "transform": "translate(0px, 0px)"
+    },
+    "contact-desc": {
+        "text": "Vous avez un projet de rénovation ou de de construction en bois ? Parlons-en ensemble !",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "letterSpacing": "0em",
+        "transform": "translate(0px, 0px)"
+    },
+    "contact-phone": {
+        "text": "+33646425659",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "letterSpacing": "0em",
+        "transform": "translate(0px, 0px)"
+    },
+    "contact-email": {
+        "text": "batihache@gmail.com",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "letterSpacing": "0em",
+        "transform": "translate(0px, 0px)"
+    },
+    "contact-address": {
+        "text": "La curtanne, 38580 La Chapelle-du-Bard",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "letterSpacing": "0em",
+        "transform": "translate(0px, 0px)"
+    },
+    "contact-hours-week": {
+        "text": "8h00 - 18h30",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "letterSpacing": "0em",
+        "transform": "translate(0px, 0px)"
+    },
+    "contact-hours-sat": {
+        "text": "Écoute téléphonique uniquement",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "letterSpacing": "0em",
+        "transform": "translate(0px, 0px)"
+    },
+    "footer-tagline": {
+        "text": "Charpenterie d'exception perpétuant le geste ancestral de l'équarrissage à la hache et des assemblage de bois traditionnels.",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1.1rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "letterSpacing": "0em",
+        "transform": "translate(0px, 0px)"
+    },
+    "footer-hours-week": {
+        "text": "8h00 - 18h30",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "letterSpacing": "0em",
+        "transform": "translate(0px, 0px)"
+    },
+    "footer-hours-sat": {
+        "text": "Écoute téléphonique uniquement",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "letterSpacing": "0em",
+        "transform": "translate(0px, 0px)"
+    },
+    "footer-hours-radius": {
+        "text": "Alpes et hautes alpes",
+        "fontFamily": "'Lora', serif",
+        "fontSize": "1rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "left",
+        "textTransform": "none",
+        "letterSpacing": "0em",
+        "transform": "translate(0px, 0px)"
+    },
+    "pillars-label": {
+        "text": "Domaines de savoir-faire",
+        "fontFamily": "'Inter', sans-serif",
+        "fontSize": "0.85rem",
+        "fontWeight": "600",
+        "fontStyle": "normal",
+        "textAlign": "center",
+        "textTransform": "uppercase",
+        "letterSpacing": "0.25em",
+        "transform": "translate(0px, 0px)"
+    },
+    "pillars-title": {
+        "text": "Mes Ouvrages",
+        "fontFamily": "'Cinzel', serif",
+        "fontSize": "2.5rem",
+        "fontWeight": "400",
+        "fontStyle": "normal",
+        "textAlign": "center",
+        "textTransform": "none",
+        "letterSpacing": "0.05em",
         "transform": "translate(0px, 0px)"
     }
 }

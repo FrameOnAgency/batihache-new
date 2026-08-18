@@ -3,5 +3,15 @@
         "construction": "/images/construction/wycart.jpg",
         "renovation": "/images/renovation/Mongardain.jpg",
         "atypique": "/images/atypique/DSCF6823.JPG"
+    },
+    "pillarTitles": {
+        "construction": "Construction",
+        "renovation": "Rénovation",
+        "atypique": "Atypique"
+    },
+    "pillarDesc": {
+        "construction": "Structures sur mesure, bâtiments d'habitation, extensions, abris. Robustesse générationnelle et assemblages bois-bois.",
+        "renovation": "Réparation, réhabilitation de l'ancien et du contemporain, renforcement de charpentes, respect du patrimoine bâti.",
+        "atypique": "Chantiers isolés, sans électricité, utilisation d'arbres sur pied, refuges, cabanes vernaculaires et ouvrages audacieux."
     }
 }
