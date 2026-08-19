@@ -1317,10 +1317,20 @@
         async function loadContent() {
             try {
                 const res = await fetch('/api/content');
-                contentData = await res.json();
-            } catch {
-                contentData = {};
-            }
+                if (res.ok) {
+                    contentData = await res.json();
+                    return;
+                }
+            } catch { /* ignore */ }
+
+            try {
+                const res = await fetch('../data/content.json');
+                if (res.ok) {
+                    contentData = await res.json();
+                    return;
+                }
+            } catch { /* ignore */ }
+            contentData = {};
         }
 
         function populateTextFields() {
@@ -1486,11 +1496,23 @@
         async function loadSettings() {
             try {
                 const res = await fetch('/api/settings');
-                settingsData = await res.json();
-                renderCoverGrid();
-            } catch {
-                settingsData = { coverImages: {} };
-            }
+                if (res.ok) {
+                    settingsData = await res.json();
+                    renderCoverGrid();
+                    return;
+                }
+            } catch { /* ignore */ }
+
+            try {
+                const res = await fetch('../data/settings.json');
+                if (res.ok) {
+                    settingsData = await res.json();
+                    renderCoverGrid();
+                    return;
+                }
+            } catch { /* ignore */ }
+            settingsData = { coverImages: {} };
+            renderCoverGrid();
         }
 
         function renderCoverGrid() {
