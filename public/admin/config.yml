@@ -1,104 +1,108 @@
 backend:
   name: git-gateway
-  branch: main # Branch to update (optional; defaults to master/main)
+  branch: master
 
-media_folder: "public/images/uploads" # Media files will be stored in the repo under this folder
-public_folder: "/images/uploads" # The src attribute for uploaded media will begin with this
+locale: "fr"
+media_folder: "public/images"
+public_folder: "/images"
+logo_url: "/images/logo.jpg"
+
+format_fields: &format_fields
+  - {label: "Texte", name: "text", widget: "text"}
+  - {label: "Police (Font)", name: "fontFamily", widget: "select", options: ["'Lora', serif", "'Cinzel', serif", "'Cinzel Decorative', serif", "'Inter', sans-serif", "Georgia, serif", "'Times New Roman', serif"], default: "'Lora', serif"}
+  - {label: "Taille", name: "fontSize", widget: "select", options: ['0.75rem', '0.85rem', '0.9rem', '1rem', '1.1rem', '1.25rem', '1.5rem', '1.75rem', '2rem', '2.5rem', '3rem', '3.5rem', '4rem'], default: "1.1rem"}
+  - {label: "Graisse (Weight)", name: "fontWeight", widget: "select", options: ["300", "400", "500", "600", "700"], default: "400"}
+  - {label: "Alignement", name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], default: "left"}
+  - {label: "Style (Italique)", name: "fontStyle", widget: "select", options: ["normal", "italic"], default: "normal"}
+  - {label: "Casse", name: "textTransform", widget: "select", options: ["none", "uppercase", "capitalize", "lowercase"], default: "none"}
+  - {name: "transform", widget: "hidden", default: "translate(0px, 0px)"}
+  - {name: "letterSpacing", widget: "string", required: false}
 
 collections:
-  - name: "cms_content"
-    label: "Textes Globaux"
-    editor:
-      preview: false
+  - name: "projects"
+    label: "Chantiers (Galerie)"
     files:
-      - label: "Configuration Textes"
-        name: "texts"
-        file: "public/data/content.json"
+      - file: "public/data/projects.json"
+        label: "Liste des Chantiers"
+        name: "projects_list"
         fields:
-          - name: "hero-title"
-            label: "Titre Principal Héro (h3)"
-            widget: "object"
-            fields:
-              - {name: "text", widget: "string", label: "Texte"}
-              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
-              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
-              - {name: "transform", widget: "string", label: "Transformation CSS (avancé)"}
-          - name: "hero-main"
-            label: "Slogan Héro (h1)"
-            widget: "object"
-            fields:
-              - {name: "text", widget: "string", label: "Texte"}
-              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
-              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
-              - {name: "transform", widget: "string"}
-          - name: "hero-desc"
-            label: "Texte d'accroche"
-            widget: "object"
-            fields:
-              - {name: "text", widget: "text", label: "Texte"}
-              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
-              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
-              - {name: "transform", widget: "string"}
-          - name: "about-highlight"
-            label: "Citation Philosophie (Gros texte)"
-            widget: "object"
-            fields:
-              - {name: "text", widget: "text", label: "Texte"}
-              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
-              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
-              - {name: "transform", widget: "string"}
-          - name: "about-prose1"
-            label: "Philosophie Paragraphe 1"
-            widget: "object"
-            fields:
-              - {name: "text", widget: "text", label: "Texte"}
-              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
-              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
-              - {name: "transform", widget: "string"}
-          - name: "about-prose2"
-            label: "Philosophie Paragraphe 2"
-            widget: "object"
-            fields:
-              - {name: "text", widget: "text", label: "Texte"}
-              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
-              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
-              - {name: "transform", widget: "string"}
-          - name: "artisan-quote"
-            label: "Citation Matteo"
-            widget: "object"
-            fields:
-              - {name: "text", widget: "text", label: "Texte"}
-              - {name: "fontStyle", widget: "select", options: ["normal", "italic"], label: "Style"}
-              - {name: "textAlign", widget: "select", options: ["left", "center", "right", "justify"], label: "Alignement"}
-              - {name: "transform", widget: "string"}
-      - label: "Photos de Couverture"
-        name: "settings"
-        file: "public/data/settings.json"
-        fields:
-          - name: "coverImages"
-            label: "Images de couverture"
-            widget: "object"
-            fields:
-              - {name: "construction", label: "Construction", widget: "image", required: false}
-              - {name: "renovation", label: "Rénovation", widget: "image", required: false}
-              - {name: "atypique", label: "Atypique", widget: "image", required: false}
-      
-  - name: "portfolio"
-    label: "Chantiers"
-    editor:
-      preview: false
-    files:
-      - label: "Tous les chantiers"
-        name: "projects_file"
-        file: "public/data/projects.json"
-        fields:
-          - name: "items"
-            label: "Liste des chantiers"
+          - label: "Chantiers"
+            name: "items"
             widget: "list"
             fields:
-              - {name: "id", label: "ID Unique (ex: c1, user-1234)", widget: "string"}
-              - {name: "title", label: "Titre", widget: "string"}
-              - {name: "category", label: "Catégorie", widget: "select", options: ["construction", "renovation", "atypique"]}
-              - {name: "description", label: "Description", widget: "text"}
-              - {name: "image", label: "Photo / Image", widget: "image", required: false}
-              - {name: "date", label: "Date (Optionnel, AAAA-MM-JJ)", widget: "string", required: false}
+              - {label: "ID (Identifiant court, ex: c1, r2, a3)", name: "id", widget: "string"}
+              - {label: "Titre du chantier", name: "title", widget: "string"}
+              - {label: "Catégorie", name: "category", widget: "select", options: ["construction", "renovation", "atypique"]}
+              - {label: "Description courte", name: "description", widget: "text"}
+              - {label: "Image Principale", name: "image", widget: "image"}
+              - {label: "Date de réalisation", name: "date", widget: "date", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD"}
+
+  - name: "settings"
+    label: "Piliers d'Activité / Couvertures"
+    files:
+      - file: "public/data/settings.json"
+        label: "Configuration Globale"
+        name: "site_settings"
+        fields:
+          - label: "Images de couverture des 3 Piliers"
+            name: "coverImages"
+            widget: "object"
+            fields:
+              - {label: "Construction", name: "construction", widget: "image"}
+              - {label: "Rénovation", name: "renovation", widget: "image"}
+              - {label: "Atypique", name: "atypique", widget: "image"}
+          - label: "Titres des 3 Piliers"
+            name: "pillarTitles"
+            widget: "object"
+            fields:
+              - {label: "Construction", name: "construction", widget: "string"}
+              - {label: "Rénovation", name: "renovation", widget: "string"}
+              - {label: "Atypique", name: "atypique", widget: "string"}
+          - label: "Descriptions des 3 Piliers"
+            name: "pillarDesc"
+            widget: "object"
+            fields:
+              - {label: "Construction", name: "construction", widget: "text"}
+              - {label: "Rénovation", name: "renovation", widget: "text"}
+              - {label: "Atypique", name: "atypique", widget: "text"}
+
+  - name: "content"
+    label: "Textes du site (Accueil / Contact)"
+    files:
+      - file: "public/data/content.json"
+        label: "Tous les Textes"
+        name: "site_content"
+        fields:
+          # HERO SECTION
+          - {label: "Hero - Sur-titre", name: "hero-title", widget: "object", fields: *format_fields}
+          - {label: "Hero - Slogan géant", name: "hero-main", widget: "object", fields: *format_fields}
+          - {label: "Hero - Description", name: "hero-desc", widget: "object", fields: *format_fields}
+          
+          # ABOUT SECTION
+          - {label: "Philosophie - Section Label", name: "about-label", widget: "object", fields: *format_fields}
+          - {label: "Philosophie - Titre", name: "about-title", widget: "object", fields: *format_fields}
+          - {label: "Philosophie - Citation Mise en Avant", name: "about-highlight", widget: "object", fields: *format_fields}
+          - {label: "Philosophie - Paragraphe 1", name: "about-prose1", widget: "object", fields: *format_fields}
+          - {label: "Philosophie - Paragraphe 2", name: "about-prose2", widget: "object", fields: *format_fields}
+          - {label: "Philosophie - Texte Artisan", name: "artisan-quote", widget: "object", fields: *format_fields}
+
+          # CONTACT SECTION
+          - {label: "Contact - Section Label", name: "contact-label", widget: "object", fields: *format_fields}
+          - {label: "Contact - Titre", name: "contact-title", widget: "object", fields: *format_fields}
+          - {label: "Contact - Sous-Titre Gauche", name: "contact-subtitle", widget: "object", fields: *format_fields}
+          - {label: "Contact - Description", name: "contact-desc", widget: "object", fields: *format_fields}
+          - {label: "Contact - Numéro Téléphone", name: "contact-phone", widget: "object", fields: *format_fields}
+          - {label: "Contact - Email", name: "contact-email", widget: "object", fields: *format_fields}
+          - {label: "Contact - Adresse", name: "contact-address", widget: "object", fields: *format_fields}
+          - {label: "Contact - Horaires Semaine", name: "contact-hours-week", widget: "object", fields: *format_fields}
+          - {label: "Contact - Horaires Samedi", name: "contact-hours-sat", widget: "object", fields: *format_fields}
+
+          # FOOTER SECTION
+          - {label: "Footer - Slogan", name: "footer-tagline", widget: "object", fields: *format_fields}
+          - {label: "Footer - Horaires Semaine", name: "footer-hours-week", widget: "object", fields: *format_fields}
+          - {label: "Footer - Horaires Samedi", name: "footer-hours-sat", widget: "object", fields: *format_fields}
+          - {label: "Footer - Rayon d'action", name: "footer-hours-radius", widget: "object", fields: *format_fields}
+
+          # PILLARS TITLES (SECTION)
+          - {label: "Section Chantiers - Label", name: "pillars-label", widget: "object", fields: *format_fields}
+          - {label: "Section Chantiers - Titre", name: "pillars-title", widget: "object", fields: *format_fields}
