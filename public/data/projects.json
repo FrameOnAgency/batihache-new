@@ -42,9 +42,9 @@
     },
     {
       "id": "r2",
-      "title": "Charpente Mongarain",
+      "title": "Grange ",
       "category": "renovation",
-      "description": "Renovation d'une toiture.",
+      "description": "Renovation d'une toiture de grange paysanne",
       "image": "/images/renovation/Mongarain.jpg",
       "date": "2026-02-28"
     },
@@ -130,19 +130,11 @@
     },
     {
       "id": "r13",
-      "title": "Fabrication d'un balcon",
+      "title": "Bardage exterieur",
       "category": "renovation",
-      "description": ".",
-      "image": "/images/gallerie/karma 2.2.jpg",
+      "description": "Pose bardage exterieur en douglas.",
+      "image": "/images/karma-2.3.jpg",
       "date": "2026-05-16"
-    },
-    {
-      "id": "r14",
-      "title": "Reprise de charpente sous toiture",
-      "category": "renovation",
-      "description": "Intégration d'un poteau de soutien central et de contrefiches.",
-      "image": "/images/renovation/reprise 1.jpg",
-      "date": "2026-04-12"
     },
     {
       "id": "r15",
@@ -153,10 +145,18 @@
       "date": "2026-04-14"
     },
     {
-      "id": "r16",
-      "title": "Détail de la liaison de sablière",
+      "id": "r14",
+      "title": "Reprise de charpente sous toiture",
       "category": "renovation",
-      "description": ".",
+      "description": "Intégration d'un poteau de soutien central et de contrefiches.",
+      "image": "/images/renovation/reprise 1.jpg",
+      "date": "2026-04-12"
+    },
+    {
+      "id": "r16",
+      "title": "Modification Ferme",
+      "category": "renovation",
+      "description": "Modification Ferme de maison pour creation ouverture pour profiter de l'espace. Utilisation du bois ancien pour maintenir l'originalitè de l'ouvrage.",
       "image": "/images/gallerie/reprise2.jpg",
       "date": "2026-04-13"
     },
@@ -164,31 +164,31 @@
       "id": "r17",
       "title": "Rénovation de toiture en tuiles",
       "category": "renovation",
-      "description": ".",
+      "description": "Rénovation de la toiture de cette cabanon. Changement chevron d'aretier, tuiles meccanique, renouvellement gouttière et bandeaux. ",
       "image": "/images/renovation/toit 1.jpg",
       "date": "2026-03-25"
     },
     {
       "id": "a1",
-      "title": "Pergola en bois équarrie à la hache ",
+      "title": "Pergola en bois équarrie  ",
       "category": "atypique",
-      "description": ".",
+      "description": "Pergola en bois de chataigner provenant dans le terrain proche et èquarrie à la hache ",
       "image": "/images/atypique/DSCF6766.JPG",
       "date": "2026-06-12"
     },
     {
       "id": "a2",
-      "title": "Estivage de montagne",
+      "title": "Lucarne de maison",
       "category": "atypique",
-      "description": "Réalisation d'un chiens assis en bois équarrie à la hache.",
+      "description": "Réalisation d'un chiens assis en bois équarrie à la hache. Bois de chataigner provenant de la foret proche.",
       "image": "/images/atypique/DSCF6804.JPG",
       "date": "2026-06-15"
     },
     {
       "id": "a3",
-      "title": "Détail du toit de la pergola",
+      "title": "Couverture Equaille emaillè",
       "category": "atypique",
-      "description": ".",
+      "description": "Conception et pose de toiture en tuiles ecaille emaillèe avec design de fantasie.",
       "image": "/images/atypique/DSCF6823.JPG",
       "date": "2026-06-20"
     }
